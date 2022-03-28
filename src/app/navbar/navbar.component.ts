@@ -24,7 +24,11 @@ export class NavbarComponent implements OnInit {
     // console.log(this.auth.getUser());
     this.isAuth = this.auth.getIsAuth();
 
-    const expirationDate = localStorage.getItem("expiration");
+    const now = new Date();
+
+    const expirationDate = localStorage.getItem("expiration") ?  localStorage.getItem("expiration") : new Date(
+      now.getTime() + 600 * 1000
+    ); 
 
     const dateInfo = new Date(`${expirationDate}`)
 
