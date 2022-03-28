@@ -1,0 +1,11 @@
+
+.error input {
+  background-color: rgb(241, 168, 168);
+}
+
+.input {
+  width: 100%;
+}
+input {
+  box-shadow: none;
+}

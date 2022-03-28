@@ -1,0 +1,8 @@
+li > a:hover {
+    cursor: pointer;
+  }
+  
+.navbar-light .navbar-nav .nav-link.active {
+    color: #28a745;
+    font-weight: bold;
+  }

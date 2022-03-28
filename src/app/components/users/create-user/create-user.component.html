@@ -1,0 +1,32 @@
+<div class="container pt-3">
+  <button type="button" class="btn btn-dark mb-3" [routerLink]="['/users/userlist']">Back</button>
+
+  <div>
+    <h3>Create User</h3>
+  </div>
+
+  <div class="w-50">
+    <form [formGroup]="userForm" (submit)="onSave()">
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          formControlName="name"
+          placeholder="user name"
+        />
+        <mat-error *ngIf="userForm.get('name')?.invalid">Enter user name.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          formControlName="job"
+          placeholder="Enter job"
+        />
+        <mat-error *ngIf="userForm.get('job')?.invalid">Enter job name.</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="accent" type="submit">Save Post</button>
+    </form>
+  </div>
+</div>

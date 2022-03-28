@@ -1,0 +1,124 @@
+<div class="container pt-3">
+  <div class="text-center">
+    <h1 style="color: green">Register</h1>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <form #signup="ngForm" (ngSubmit)="save(signup)">
+        <div class="mb-3">
+          <mat-form-field class="input">
+            <!-- <label for="email" class="form-label">Email address</label> -->
+            <input
+              matInput
+              type="email"
+              class="form-control"
+              id="email"
+              aria-describedby="emailHelp"
+              placeholder="Email address"
+              name="email"
+              ngModel
+              #email="ngModel"
+              required
+              email
+            />
+            <mat-error
+              *ngIf="email.invalid && (email.touched || email.dirty)"
+              id="emailHelp"
+              class="form-text"
+            >
+              <p *ngIf="email.errors?.['required']">email is required</p>
+              <p *ngIf="email.errors?.['email']">enter a valid email</p>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3">
+          <mat-form-field class="input">
+            <!-- <label for="password" class="form-label">Password</label> -->
+            <input
+              matInput
+              [type]="hide ? 'password' : 'text'"
+              class="form-control"
+              id="password"
+              name="password"
+              ngModel
+              #password="ngModel"
+              placeholder="password"
+              required
+              minlength="8"
+              pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+            />
+
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <mat-error
+            *ngIf="password.invalid && (password.touched || password.dirty)" class="form-text"
+          >
+            <p *ngIf="password.errors?.['required']">password is required</p>
+            <p *ngIf="password.errors?.['minlength']"
+              >password is too short</p
+            >
+            <p *ngIf="password.errors?.['pattern']">Password should have at least one letter, one number and one special character</p>
+          </mat-error>
+        </div>
+
+        <div class="mb-3">
+          <mat-form-field class="input">
+            <!-- <label for="c_password" class="form-label">Corfirm password</label> -->
+            <input
+              matInput
+              [type]="hide ? 'password' : 'text'"
+              class="form-control"
+              id="c_password"
+              name="c_password"
+              ngModel
+              #c_password="ngModel"
+              placeholder="confirm password"
+              required
+            />
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <mat-error *ngIf="c_password.invalid && (c_password.touched || c_password.dirty)" class="form-text">
+            <em *ngIf="c_password.errors?.['required']">confirm password</em>
+          </mat-error>
+        </div>
+
+        <div>
+          <div style="width: 80%" class="mx-auto">
+            <button
+              class="btn btn-warning"
+              style="width: 100%; display: block; color: #ffffff"
+              [disabled]="signup.invalid"
+            >
+              Save
+            </button>
+            <button
+              class="btn btn-secondary"
+              style="
+                width: 100%;
+                display: block;
+                color: #ffffff;
+                margin-top: 10px;
+              "
+            >
+              cancel
+            </button>
+            <p class="mt-2 text-success">
+              HAVE AN ACCOUNT? PLAESE
+              <em
+                class="text-danger"
+                [routerLink]="['/users/login']"
+                style="cursor: pointer"
+                >LOGIN</em
+              >
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

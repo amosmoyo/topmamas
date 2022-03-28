@@ -1,0 +1,10 @@
+<h3 mat-dialog-title class="text-center text-dark">SERVER ERROR...</h3>
+
+<div mat-dialog-content class="border mb-2 border-danger text-danger rounded-lg text-center">
+	<p class="py-2 px-4">{{ data.message }}</p>
+</div>
+<div mat-dialog-actions>
+	<button mat-dialog-close (click)="close()" class="btn btn-danger btn-sm float-right">
+		<span aria-hidden="true">Okay</span>
+	</button>
+</div>
